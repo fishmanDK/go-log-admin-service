@@ -1,1 +1,1 @@
-module go-log-admin
+module go-log-admin-service
