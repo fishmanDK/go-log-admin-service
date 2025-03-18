@@ -1,1 +1,1 @@
-module go-log-admin-service
+module github.com/fishmanDK/go-log-admin-service
