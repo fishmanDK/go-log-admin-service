@@ -6,4 +6,4 @@ test:
 	go test ./...
 
 gen:
-	protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --proto_path=./api ./api/*.proto
+	protoc --go_out=paths=source_relative:./pkg/goLog-admin-service-api --go-grpc_out=paths=source_relative:./pkg/goLog-admin-service-api --proto_path=./api ./api/*.proto
