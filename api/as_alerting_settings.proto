@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package admin_service;
+
+option go_package = "./pkg/goLog-admin-service-api;goLog-admin-service";
+
+service AlertingSettingsService {
+  rpc CreateAlertingSettings(CreateAlertingSettingsRequest) returns (CreateAlertingSettingsResponse) {}
+  rpc GetAlertingSettings(GetAlertingSettingsRequest) returns (AlertingSetting) {}
+  rpc ListAlertingSettings(ListAlertingSettingsRequest) returns (ListAlertingSettingsResponse) {}
+  rpc DeleteAlertingSettings(DeleteAlertingSettingsRequest) returns (DeleteAlertingSettingsResponse) {}
+  rpc PatchAlertingSettings(PatchAlertingSettingsRequest) returns (AlertingSetting) {}
+}
+
+message CreateAlertingSettingsRequest {
+  string telegram_bot_token = 1;
+  string email_to_sending = 2;
+  string trigger_condition = 3;
+}
+
+message CreateAlertingSettingsResponse {
+  AlertingSetting alert_setting = 1;
+}
+
+message GetAlertingSettingsRequest {
+  string id = 1;
+}
+
+message ListAlertingSettingsRequest {
+  repeated string ids = 1;
+}
+
+message ListAlertingSettingsResponse {
+  repeated AlertingSetting alerting_settings = 1;
+  int64 total = 2;
+}
+
+message DeleteAlertingSettingsRequest {
+  string id = 1;
+}
+
+message DeleteAlertingSettingsResponse {}
+
+message PatchAlertingSettingsRequest {
+  string telegram_bot_token = 1;
+  bool use_telegram_bot_token = 2;
+  string email_to_sending = 3;
+  bool use_email_to_sending = 4;
+  string trigger_condition = 5;
+}
+
+message AlertingSetting {
+  string id = 1;
+  string telegram_bot_token = 2;
+  bool use_telegram_bot_token = 3;
+  string email_to_sending = 4;
+  bool use_email_to_sending = 5;
+  string trigger_condition = 6;
+}

@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package admin_service;
+
+option go_package = "./pkg/goLog-admin-service-api;goLog-admin-service";
+
+service ClientService {
+  rpc GetClient(GetClientRequest) returns (Client) {}
+  rpc ListClients(ListClientsRequest) returns (ListClientsResponse) {}
+  rpc CreateClient(CreateClientRequest) returns (Client) {}
+  rpc DeleteClient(DeleteClientRequest) returns (DeleteClientResponse) {}
+  rpc PatchClient(PatchClientRequest) returns (PatchClientRequestResponse) {}
+}
+
+message PatchClientRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message PatchClientRequestResponse {
+  Client client = 1;
+}
+
+message DeleteClientRequest {
+  string id = 1;
+}
+
+message DeleteClientResponse {}
+
+message CreateClientRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message ListClientsRequest {
+  repeated string ids = 1;
+}
+
+message ListClientsResponse {
+  repeated Client clients = 1;
+  int64 total = 2;
+}
+
+message GetClientRequest {
+  string client_id = 1;
+}
+
+message Client {
+  string id = 1;
+  string email = 2;
+  string password = 3;
+
+}
