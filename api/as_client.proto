@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package admin_service;
 
-option go_package = "github.com/fishmanDK/goLog-admin-service/pkg/goLog-admin-service-api;goLog_admin_service";
+option go_package = "github.com/fishmanDK/go-log-admin-service/pkg/go-log-admin-service-api;goLog_admin_service";
 
 service ClientService {
   rpc GetClient(GetClientRequest) returns (Client) {}
